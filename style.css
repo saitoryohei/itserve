@@ -206,10 +206,12 @@ ul {
     background: var(--bg-light);
 }
 
-.service-grid {
+service-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* レスポンシブグリッド */
-    gap: 30px;
+    /* ↓ここを書き換え（1fr 1fr で「等分に2つ並べる」という意味になります） */
+    grid-template-columns: 1fr 1fr; 
+    gap: 30px; /* カード同士の間隔 */
+    margin-top: 40px;
 }
 
 .service-card {
