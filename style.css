@@ -1,4 +1,20 @@
 /* --- 基本設定 --- */
+
+/* 全ての要素のサイズ計算を統一（はみ出し防止の基本） */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* 画面外へのはみ出しを強制的にカットする */
+html, body {
+    width: 100%;
+    overflow-x: hidden ; /* 横スクロールを禁止 */
+    margin: 0;
+    padding: 0;
+    -webkit-text-size-adjust: 100%; /* Safariでの文字サイズ勝手変更を防ぐ */
+}
+
+
 :root {
     --primary-color: #0d2538;   /* 信頼のネイビー */
     --accent-color: #007bff;    /* 進歩のブルー */
