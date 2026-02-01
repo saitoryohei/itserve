@@ -383,40 +383,61 @@ ul {
     font-size: 0.8rem;
 }
 
-/* --- スマホ対応（ここを丸ごと貼り替えてください） --- */
+/* --- スマホ対応（768px以下の設定） --- */
 @media (max-width: 768px) {
+    
+    /* 1. サイト全体の余白調整 */
+    .container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    /* 2. ヘッダー調整 */
     .header-inner {
-        padding: 0 15px;
+        padding: 0 20px;
     }
     
-    /* ナビゲーションを隠す */
-    .nav {
-        display: none;
-    }
-    
-    /* ハンバーガーメニューを完全に消滅させる設定 */
-    .hamburger {
-        display: none !important;       /* 1. 最優先で非表示にする */
-        width: 0 !important;            /* 2. 幅をゼロにする */
-        height: 0 !important;           /* 3. 高さをゼロにする */
-        background: transparent !important; /* 4. 背景を透明にする */
-        border: none !important;        /* 5. 枠線を消す */
-        opacity: 0 !important;          /* 6. 透明度をゼロにする */
-        pointer-events: none;           /* 7. クリック判定もなくす */
-    }
+    /* ナビとハンバーガーを完全に消す（前回の修正を維持） */
+    .nav { display: none; }
+    .hamburger { display: none !important; }
 
-
+    /* 3. ヒーローセクション（トップ画像部分） */
+    .hero-content {
+        text-align: center; /* スマホでは中央揃えの方が見栄えが良い */
+        padding: 80px 20px; /* 上下の余白を増やして窮屈さをなくす */
+    }
     .hero-title {
-        font-size: 2rem;
+        font-size: 1.8rem; /* 少し小さくして改行崩れを防ぐ */
+        line-height: 1.4;  /* 行間を広げて読みやすく */
+        margin-bottom: 20px;
+    }
+    .hero-desc {
+        font-size: 0.9rem;
+        text-align: left; /* 説明文は左揃えに戻す（読みやすさ重視） */
     }
 
+    /* 4. サービス一覧（カード）を縦積みにする */
+    .service-grid {
+        display: block; /* グリッドを解除して縦並びにする */
+    }
+    .service-card {
+        margin-bottom: 30px; /* カード同士の間隔を空ける */
+    }
+
+    /* 5. 会社案内セクション */
     .company-wrapper {
-        flex-direction: column;
+        flex-direction: column; /* 縦並びにする */
+        gap: 30px; /* テキストと画像の間に隙間を作る */
+    }
+    
+    .company-text {
+        order: 1; /* スマホではテキストを上に */
     }
     
     .company-image {
+        order: 2; /* 画像を下に */
         width: 100%;
-        height: 250px;
+        height: 200px; /* スマホなら高さは少し控えめでOK */
+        margin-top: 0;
     }
 }
-
