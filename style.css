@@ -404,4 +404,19 @@ ul {
         opacity: 0 !important;          /* 6. 透明度をゼロにする */
         pointer-events: none;           /* 7. クリック判定もなくす */
     }
+
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .company-wrapper {
+        flex-direction: column;
+    }
+    
+    .company-image {
+        width: 100%;
+        height: 250px;
+    }
 }
+
