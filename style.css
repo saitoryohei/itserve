@@ -1,108 +1,136 @@
-/* --- 基本設定 --- */
-
-
-
-
-:root {
-    --primary-color: #0d2538;   /* 信頼のネイビー */
-    --accent-color: #007bff;    /* 進歩のブルー */
-    --text-color: #333;
-    --bg-light: #f4f7f9;
-    --white: #fff;
+/* ==================================================
+   基本設定（リセット・共通）
+   ================================================== */
+/* ボックスサイズの計算を統一（レイアウト崩れ防止） */
+*, *::before, *::after {
+    box-sizing: border-box;
 }
 
+/* 基本スタイル */
 body {
     font-family: 'Noto Sans JP', sans-serif;
-    color: var(--text-color);
-    line-height: 1.8;
     margin: 0;
-    background-color: var(--white);
+    padding: 0;
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden; /* 横揺れ防止 */
 }
 
 a {
     text-decoration: none;
     color: inherit;
-    transition: 0.3s;
 }
 
 ul {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: bottom;
+}
+
+/* レイアウト用コンテナ */
 .container {
     max-width: 1100px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-/* --- ヘッダー --- */
+/* セクション共通 */
+.section {
+    padding: 80px 0;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.en-title {
+    display: block;
+    color: #0066cc;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    font-family: 'Roboto', sans-serif;
+}
+
+.jp-title {
+    font-size: 2rem;
+    margin: 10px 0;
+}
+
+/* ==================================================
+   ヘッダー
+   ================================================== */
 .header {
-    background: var(--white);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    position: fixed;
     width: 100%;
+    height: 70px;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    position: fixed;
     top: 0;
+    left: 0;
     z-index: 100;
 }
 
 .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 70px;
-    max-width: 1200px;
-    margin: 0 auto;
     padding: 0 20px;
 }
 
 .logo a {
-    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
     font-weight: 700;
-    font-size: 1.5rem;
-    color: var(--primary-color);
-    letter-spacing: 0.05em;
+    color: #0066cc;
 }
 
 .nav-list {
     display: flex;
-    gap: 30px;
     align-items: center;
+    gap: 30px;
 }
 
 .nav-list a {
     font-size: 0.95rem;
     font-weight: 500;
+    transition: color 0.3s;
 }
 
 .nav-list a:hover {
-    color: var(--accent-color);
+    color: #0066cc;
 }
 
 .btn-contact {
-    background: var(--primary-color);
-    color: var(--white) !important;
+    background: #0066cc;
+    color: #fff !important;
     padding: 10px 20px;
-    border-radius: 4px;
+    border-radius: 5px;
 }
 
 .btn-contact:hover {
-    background: var(--accent-color);
+    background: #0052a3;
 }
 
-/* スマホ用ハンバーガー（今回は見た目だけ） */
-.hamburger {
-    display: none;
-}
-
-/* --- ヒーローセクション --- */
+/* ==================================================
+   メインビジュアル（Hero）
+   ================================================== */
 .hero {
-    height: 80vh; /* 画面の80%の高さ */
-    background: linear-gradient(135deg, #eef2f3 0%, #8e9eab 100%); /* 仮の背景色 */
+    position: relative;
+    height: 600px;
     display: flex;
     align-items: center;
-    position: relative;
-    padding-top: 70px; /* ヘッダー分 */
+    justify-content: center;
+    color: #fff;
+    margin-top: 70px; /* ヘッダーの高さ分 */
 }
 
 .hero-bg {
@@ -111,168 +139,115 @@ ul {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 1; /* コンテンツの後ろに配置 */
-    overflow: hidden;
+    z-index: 1;
 }
 
 .hero-bg img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* 画像の比率を保ちつつエリア全体を覆う */
-    filter: brightness(0.8); /* 文字を読みやすくするため少し暗くする */
+    object-fit: cover;
+    filter: brightness(0.6);
 }
 
-/* 既存の .hero-content の z-index を確認 */
 .hero-content {
-    /* ...他のスタイル... */
-    z-index: 2; /* 背景より手前に表示 */
-}
-
-
-
-.hero-content {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 20px;
-    width: 100%;
+    position: relative;
     z-index: 2;
+    text-align: center;
+    max-width: 800px;
+    padding: 0 20px;
 }
 
 .hero-sub {
-    color: var(--accent-color);
-    font-weight: 700;
     font-family: 'Roboto', sans-serif;
     letter-spacing: 0.1em;
-    margin-bottom: 15px;
+    font-weight: 700;
+    margin-bottom: 10px;
 }
 
 .hero-title {
-    font-size: 3.5rem;
+    font-size: 3rem;
     font-weight: 700;
+    margin-bottom: 20px;
     line-height: 1.3;
-    margin-bottom: 25px;
-    color: white;
 }
 
 .hero-desc {
     font-size: 1.1rem;
-    margin-bottom: 40px;
-    color: #ffffff;
+    margin-bottom: 30px;
 }
-    
 
 .btn-primary {
     display: inline-block;
-    background: var(--accent-color);
-    color: var(--white);
+    background: #fff;
+    color: #0066cc;
     padding: 15px 40px;
     border-radius: 50px;
     font-weight: 700;
-    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+    transition: background 0.3s;
 }
 
 .btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.4);
+    background: #f0f0f0;
 }
 
-/* --- セクション共通 --- */
-.section {
-    padding: 100px 0;
-}
-
-.section-header {
-    text-align: center;
-    margin-bottom: 60px;
-}
-
-.en-title {
-    display: block;
-    color: var(--accent-color);
-    font-family: 'Roboto', sans-serif;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    margin-bottom: 10px;
-}
-
-.jp-title {
-    font-size: 2rem;
-    color: var(--primary-color);
-    margin-bottom: 10px;
-}
-
-/* --- 事業内容 (Service) --- */
+/* ==================================================
+   事業内容（Service）
+   ================================================== */
 .service-section {
-    background: var(--bg-light);
+    background: #f9f9f9;
 }
 
-service-grid {
+/* グリッドレイアウト：PCでは2列 */
+.service-grid {
     display: grid;
-    /* ↓ここを書き換え（1fr 1fr で「等分に2つ並べる」という意味になります） */
-    grid-template-columns: 1fr 1fr; 
-    gap: 30px; /* カード同士の間隔 */
-    margin-top: 40px;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
 }
 
 .service-card {
-    background: var(--white);
-    padding: 40px 30px;
+    background: #fff;
+    padding: 30px;
     border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
-    transition: 0.3s;
-    border-top: 3px solid transparent;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
 }
 
 .service-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    border-top: 3px solid var(--accent-color);
 }
 
-/* ハイライト（イベント支援を目立たせる） */
-.service-card.highlight {
-    border-top: 3px solid #ff9800; /* オレンジで強調 */
-}
-.service-card.highlight .icon-box {
-    background: #fff3e0;
-    color: #ff9800;
-}
-
-.icon-box {
-    width: 60px;
-    height: 60px;
-    background: #e3f2fd;
-    color: var(--accent-color);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5rem;
+.service-card .icon-box {
+    font-size: 2.5rem;
+    color: #0066cc;
     margin-bottom: 20px;
 }
 
 .service-card h3 {
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     margin-bottom: 15px;
-    color: var(--primary-color);
+    border-bottom: 2px solid #0066cc;
+    display: inline-block;
+    padding-bottom: 5px;
 }
 
 .tag-list {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 .tag-list li {
+    background: #eee;
     font-size: 0.8rem;
-    background: #f0f0f0;
     padding: 5px 10px;
     border-radius: 4px;
     color: #666;
 }
 
-/* --- 会社案内 (Company) --- */
+/* ==================================================
+   会社案内（Company）
+   ================================================== */
 .company-wrapper {
     display: flex;
     align-items: center;
@@ -283,49 +258,41 @@ service-grid {
     flex: 1;
 }
 
-.company-text h2 {
-    font-size: 2rem;
-    line-height: 1.4;
-    margin-bottom: 30px;
-    color: var(--primary-color);
-}
-
 .company-image {
     flex: 1;
-    height: 400px; /* 高さは適宜調整してください */
-    
+    border-radius: 8px;
+    overflow: hidden;
+    height: 350px;
 }
 
 .company-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* 枠に合わせてトリミング */
+    object-fit: cover;
 }
 
 .btn-secondary {
     display: inline-block;
-    border: 2px solid var(--primary-color);
-    color: var(--primary-color);
-    padding: 12px 30px;
+    margin-top: 20px;
+    color: #0066cc;
+    border: 1px solid #0066cc;
+    padding: 10px 30px;
     border-radius: 50px;
-    font-weight: 700;
-    margin-top: 30px;
+    font-weight: 500;
+    transition: all 0.3s;
 }
 
 .btn-secondary:hover {
-    background: var(--primary-color);
-    color: var(--white);
+    background: #0066cc;
+    color: #fff;
 }
 
-/* --- ニュース --- */
-.news-list {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
+/* ==================================================
+   お知らせ（News）
+   ================================================== */
 .news-list li {
-    border-bottom: 1px solid #eee;
-    padding: 20px 0;
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -335,113 +302,92 @@ service-grid {
 .news-list .date {
     font-family: 'Roboto', sans-serif;
     color: #888;
-    font-size: 0.9rem;
 }
 
 .news-list .label {
+    background: #0066cc;
+    color: #fff;
     font-size: 0.8rem;
-    padding: 3px 10px;
+    padding: 2px 10px;
     border-radius: 2px;
-    color: white;
-}
-.label.event { background: #ff9800; }
-.label.info { background: var(--accent-color); }
-.label.recruit { background: #4caf50; }
-
-.news-list a:hover {
-    color: var(--accent-color);
-    text-decoration: underline;
 }
 
-/* --- フッター --- */
+/* ==================================================
+   フッター
+   ================================================== */
 .footer {
-    background: var(--primary-color);
-    color: var(--white);
-    padding: 60px 0 20px;
-    font-size: 0.9rem;
+    background: #333;
+    color: #fff;
+    padding: 50px 0 20px;
 }
 
 .footer-inner {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 30px;
-    margin-bottom: 40px;
+    align-items: center;
+    margin-bottom: 30px;
 }
 
-.footer-info h2 {
-    font-family: 'Roboto', sans-serif;
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-}
-
-.footer-links {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.footer-links a {
+    margin-left: 20px;
+    font-size: 0.9rem;
+    color: #ccc;
 }
 
 .copyright {
     text-align: center;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    padding-top: 20px;
-    color: #888;
     font-size: 0.8rem;
+    color: #888;
+    border-top: 1px solid #444;
+    padding-top: 20px;
 }
 
-/* ========================================
-   スマホ完全対応（iPhone 13 mini 最適化）
-   ======================================== */
+
+/* ==================================================
+   ★スマホ・タブレット対応（レスポンシブ）
+   ================================================== */
 @media screen and (max-width: 768px) {
-
-    /* 1. サイト全体の余白を確保 */
-    .container {
-        width: 100% !important;
-        padding-left: 20px !important;
-        padding-right: 20px !important;
-        box-sizing: border-box;
+    
+    /* ナビメニューを隠す（ハンバーガーもなし） */
+    .nav {
+        display: none;
     }
 
-    /* 2. ヘッダー：メニューを確実に消す */
-    .nav, .hamburger {
-        display: none !important;
-    }
-
-    /* 3. ヒーローセクション：文字サイズ調整 */
-    .hero-content {
-        padding: 60px 20px;
-        text-align: center;
-    }
+    /* ヒーローセクション調整 */
     .hero-title {
-        font-size: 1.5rem !important; /* 文字を少し小さくして改行を防ぐ */
-        line-height: 1.5;
-    }
-
-    /* 4. ★ここが重要：サービス一覧を「強制的に縦1列」にする */
-    .service-grid {
-        display: grid !important;
-        grid-template-columns: 1fr !important; /* 1列にする命令 */
-        gap: 30px;
-        margin-top: 30px;
+        font-size: 1.8rem;
     }
     
-    .service-card {
-        width: 100% !important; /* カードの幅を画面いっぱいにする */
+    /* 事業内容：スマホでは1列にする */
+    .service-grid {
+        grid-template-columns: 1fr;
     }
 
-    /* 5. 会社案内：縦並びにする */
+    /* 会社案内：縦並びにする */
     .company-wrapper {
-        display: flex !important;
-        flex-direction: column !important; /* 縦並び */
+        flex-direction: column;
         gap: 30px;
+    }
+    
+    .company-text {
+        order: 1; /* テキストが上 */
     }
     
     .company-image {
-        width: 100% !important;
-        height: 200px !important;
+        order: 2; /* 画像が下 */
+        width: 100%;
+        height: 250px;
+    }
+
+    /* フッター：縦並び */
+    .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
     }
     
-    .company-text h2 {
-        font-size: 1.4rem;
+    .footer-links a {
+        display: block;
+        margin: 10px 0 0 0;
     }
 }
