@@ -383,61 +383,59 @@ ul {
     font-size: 0.8rem;
 }
 
-/* --- スマホ対応（768px以下の設定） --- */
-@media (max-width: 768px) {
-    
-    /* 1. サイト全体の余白調整 */
+/* ========================================
+   スマホ完全対応（iPhone 13 mini 最適化）
+   ======================================== */
+@media screen and (max-width: 768px) {
+
+    /* 1. サイト全体の余白を確保 */
     .container {
-        padding-left: 20px;
-        padding-right: 20px;
+        width: 100% !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        box-sizing: border-box;
     }
 
-    /* 2. ヘッダー調整 */
-    .header-inner {
-        padding: 0 20px;
+    /* 2. ヘッダー：メニューを確実に消す */
+    .nav, .hamburger {
+        display: none !important;
     }
-    
-    /* ナビとハンバーガーを完全に消す（前回の修正を維持） */
-    .nav { display: none; }
-    .hamburger { display: none !important; }
 
-    /* 3. ヒーローセクション（トップ画像部分） */
+    /* 3. ヒーローセクション：文字サイズ調整 */
     .hero-content {
-        text-align: center; /* スマホでは中央揃えの方が見栄えが良い */
-        padding: 80px 20px; /* 上下の余白を増やして窮屈さをなくす */
+        padding: 60px 20px;
+        text-align: center;
     }
     .hero-title {
-        font-size: 1.8rem; /* 少し小さくして改行崩れを防ぐ */
-        line-height: 1.4;  /* 行間を広げて読みやすく */
-        margin-bottom: 20px;
-    }
-    .hero-desc {
-        font-size: 0.9rem;
-        text-align: left; /* 説明文は左揃えに戻す（読みやすさ重視） */
+        font-size: 1.5rem !important; /* 文字を少し小さくして改行を防ぐ */
+        line-height: 1.5;
     }
 
-    /* 4. サービス一覧（カード）を縦積みにする */
+    /* 4. ★ここが重要：サービス一覧を「強制的に縦1列」にする */
     .service-grid {
-        display: block; /* グリッドを解除して縦並びにする */
-    }
-    .service-card {
-        margin-bottom: 30px; /* カード同士の間隔を空ける */
-    }
-
-    /* 5. 会社案内セクション */
-    .company-wrapper {
-        flex-direction: column; /* 縦並びにする */
-        gap: 30px; /* テキストと画像の間に隙間を作る */
+        display: grid !important;
+        grid-template-columns: 1fr !important; /* 1列にする命令 */
+        gap: 30px;
+        margin-top: 30px;
     }
     
-    .company-text {
-        order: 1; /* スマホではテキストを上に */
+    .service-card {
+        width: 100% !important; /* カードの幅を画面いっぱいにする */
+    }
+
+    /* 5. 会社案内：縦並びにする */
+    .company-wrapper {
+        display: flex !important;
+        flex-direction: column !important; /* 縦並び */
+        gap: 30px;
     }
     
     .company-image {
-        order: 2; /* 画像を下に */
-        width: 100%;
-        height: 200px; /* スマホなら高さは少し控えめでOK */
-        margin-top: 0;
+        width: 100% !important;
+        height: 200px !important;
+    }
+    
+    .company-text h2 {
+        font-size: 1.4rem;
     }
 }
